@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import {Script} from "forge-std/Script.sol";
 import {WinzzersMarket}from "../src/BetFactory.sol";
 
-contract CounterScript is Script {
+contract BetFactoryScript is Script {
     WinzzersMarket public counter;
 
     function setUp() public {}
@@ -20,4 +20,3 @@ contract CounterScript is Script {
         vm.stopBroadcast();
     }
 }
-

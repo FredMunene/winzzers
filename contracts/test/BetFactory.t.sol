@@ -27,14 +27,14 @@ contract BetFactoryTest is Test {
         string[] memory outcomes = new string[](2);
         outcomes[0] = "Yes";
         outcomes[1] = "No";
-        marketId = market.createMarket(outcomes, 1_000e6, 100);
+        marketId = market.createMarket(outcomes, 1_000e6, 100, 30 days);
     }
 
     function test_CreateMarket_IncrementsCounterAndStoresOutcomes() public {
         uint256 beforeCount = market.marketCounter();
         uint256 marketId = _createBasicMarket();
         assertEq(market.marketCounter(), beforeCount + 1);
-        ( , , , , uint256 outcomeCount, , , , ) = market.getMarketSummary(marketId);
+        ( , , , , uint256 outcomeCount, , , , , , ) = market.getMarketSummary(marketId);
         assertEq(outcomeCount, 2);
         (string memory name0,, ,) = market.getOutcome(marketId, 0);
         (string memory name1,, ,) = market.getOutcome(marketId, 1);
